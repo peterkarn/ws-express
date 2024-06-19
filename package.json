@@ -1,0 +1,18 @@
+{
+  "name": "ws-express-test-server",
+  "version": "0.0.1",
+  "description": "ws-express test server example",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "socket.io": "2.2.0",
+    "socket.io-latest": "npm:socket.io@^4.7.4"
+  },
+  "scripts": {
+    "start:v4": "nodemon server_v4.js",
+    "start:v2": "nodemon server_v2.js"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.11"
+  }
+}
