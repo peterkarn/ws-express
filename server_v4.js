@@ -4,9 +4,9 @@ const socketIO = require('socket.io-latest');
 var cors = require('cors')
 const app = express();
 
-const { 
-  newNotificationEvent : event 
-} = require('./events/new-notification');
+const {
+  notificationCenterEvent : event
+} = require('./events/v4/notification_center');
 
 const corsOptions = {
   origin: 'http://localhost:3000', // Replace with the origin of your frontend application
