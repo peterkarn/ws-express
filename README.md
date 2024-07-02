@@ -13,17 +13,13 @@
  - Config your vue3  `.env`  project file:
   `VITE_SOCKET_V2_EXEC=http://localhost:3334`
   `VITE_SOCKET_V4_EXEC=http://localhost:3333`
- -  Restart dev localhost with new .env params  
+ -  Restart dev localhost with updated .env params  
 
 ## Nuxt
- - To test **v2 connection (old)** you can temporary replace
- `connection: GetApiDomain({ isDev, $config, req, env }, 'socket'),`
-*with*
- `connection: 'http://localhost:3334',`
-while *VueSocketIO* being initialized in  *app/plugins/socket.client.js*
- - To test **v4 connection (new)** node_modules/@altacore/plugin-helpers/dist/esm/socketService.js should be temporary edited. Setup io connection  with `this.#socket = io('http://localhost:3333',options)`   
-
-**IMPORTANT: don't forger revert changes**
+ - Add to your `nuxt.config.js` env paramenters:
+ `SOCKET_V4_EXEC: 'http://localhost:3333'`
+ `SOCKET_V2_EXEC: 'http://localhost:3334'`
+  -  Restart dev localhost with updated NUXT configuration
 
 
 

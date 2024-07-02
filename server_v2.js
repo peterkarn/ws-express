@@ -4,9 +4,9 @@ const socketIO = require('socket.io');
 const cors = require('cors')
 const app = express();
 
-const { 
-  tournamentStatusEvent : event 
-} = require('./events/tournament-status');
+const {
+  tournamentStatusRunningEvent : event
+} = require('./events/v4/tournament_status');
 
 const corsOptions = {
   origin: 'http://localhost:3000', // Replace with the origin of your frontend application
