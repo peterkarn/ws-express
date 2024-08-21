@@ -10,7 +10,7 @@
 
 ## Vue3
 
- - Config your vue3  `.env`  project file:
+ - Config your vue3  `.env.development`  project file:
   `VITE_SOCKET_V2_EXEC=http://localhost:3334`
   `VITE_SOCKET_V4_EXEC=http://localhost:3333`
  -  Restart dev localhost with updated .env params  
