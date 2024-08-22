@@ -5,8 +5,8 @@ const cors = require('cors')
 const app = express();
 
 const {
-  tournamentStatusRunningEvent : event
-} = require('./events/v4/tournament_status');
+  achievementEvent : event
+} = require('./events/v2/achievment');
 
 const corsOptions = {
   origin: 'http://localhost:3000', // Replace with the origin of your frontend application
