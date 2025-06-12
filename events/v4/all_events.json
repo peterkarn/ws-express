@@ -1,0 +1,179 @@
+{
+  "balance_update": {
+    "currency": "CAD",
+    "balance": 22.12,
+    "bonus": 0,
+    "bonus_sport": 0,
+    "overdraft": 0,
+    "total_bonus": 0,
+    "total_balance": 22.12,
+    "loyalty": 1000,
+    "withdraw_allowed": 23.02
+  },
+  "notification_center": {
+    "account_id": 49649,
+    "notification_id": 1058,
+    "created": "2024-05-07 11:34:22",
+    "notification_type": "activity",
+    "reading": false,
+    "link_url": "/wallet/deposit",
+    "delivery_types": ["base", "popup", "toast"],
+    "message": {
+      "base": {
+        "header": "NL Header text",
+        "content": "NL content <b>strong</b> <img src=\"https://dev.winlegends.com/_nuxt/img/activity.4115351.webp\" />",
+        "excerpt": "NL excerpt text"
+      },
+      "popup": {
+        "header": "Popup Header text",
+        "content": "Popup content <b>strong</b> <img src=\"https://dev.winlegends.com/_nuxt/img/activity.4115351.webp\" />",
+        "excerpt": "Popup excerpt text"
+      },
+      "toast": {
+        "excerpt": "Toast excerpt"
+      }
+    },
+    "translations": {
+      "link_translation": "Deposit",
+      "content_translation": "NL Header text",
+      "header_translation": "NL content <b>strong</b> <img src=\"https://dev.winlegends.com/_nuxt/img/activity.4115351.webp\" />",
+      "popup_header_translation": "Popup Header text",
+      "popup_content_translation": "Popup content <b>strong</b> <img src=\"https://dev.winlegends.com/_nuxt/img/activity.4115351.webp\" />"
+    }
+  },
+  "tournament_leaderboard": {
+    "leaderboard": [
+      {
+        "place": 0,
+        "prize": [
+          {
+            "type": {
+              "freespin": 0,
+              "loyalty": 0,
+              "casino": 0
+            },
+            "amount": 0,
+            "game_id": 0,
+            "wager": 0,
+            "currency_amount": [
+              {
+                "currency": "string",
+                "amount": 0
+              }
+            ],
+            "game_exclusive": true,
+            "brand_exclusive": true
+          }
+        ],
+        "player": {
+          "participant_id": 0,
+          "login": "string",
+          "currency": "string",
+          "rounds": 0,
+          "total_rounds": 0,
+          "bet": 0,
+          "win": 0,
+          "rating": 0,
+          "current": true
+        }
+      }
+    ],
+    "amount": 10,
+    "currency_amount": [],
+    "idx": 1,
+    "type": "loyalty",
+    "wager": 0,
+    "name": "For QA (coins)",
+    "reason": "Tournament started",
+    "status": "running",
+    "tournament_id": 42839
+  },
+  "info_wins": {
+    "gameAlias": "114711-penalty-shoot-out-street",
+    "gameId": 46664,
+    "images": {
+      "small": "https://altacdn.com/bf/img/games/114711-penalty-shoot-out-street.jpg",
+      "mid": "https://altacdn.com/bf/img/games/114711-penalty-shoot-out-street_thumbnailx2.jpg",
+      "big": null,
+      "promo": "https://altacdn.com/bf/img/games/114711-penalty-shoot-out-street.jpg"
+    },
+    "currency": "EUR",
+    "gameName": "Penalty Shoot-out: Street",
+    "brandName": "EvoPlay",
+    "login": "MOUNS*****",
+    "betDate": 1700777995338,
+    "betSum": 10,
+    "winSum": 40,
+    "multiplier": "4",
+    "actionType": "allbets"
+  },
+  "tournament_status": [
+    {
+      "variant": "running",
+      "payload": {
+        "status": "running",
+        "tournament_id": 1243,
+        "name": "For QA 2",
+        "reason": "Tournament started",
+        "leaderboard": [
+          {
+            "place": 1,
+            "prize": [
+              {
+                "type": "freespin",
+                "wager": 0,
+                "amount": 10,
+                "currency_amount": [],
+                "idx": 1
+              }
+            ],
+            "player": {}
+          }
+        ]
+      }
+    },
+    {
+      "variant": "complete",
+      "payload": {
+        "status": "complete",
+        "tournament_id": 1243,
+        "name": "For QA 2",
+        "reason": "",
+        "leaderboard": [
+          {
+            "place": 3,
+            "prize": [
+              {
+                "type": "loyalty",
+                "wager": 0,
+                "amount": 10,
+                "currency_amount": [],
+                "idx": 1
+              }
+            ],
+            "player": {
+              "participant_id": 38188,
+              "login": "TEST*****",
+              "currency": "EUR",
+              "rounds": 2,
+              "total_rounds": 2,
+              "bet": 12,
+              "win": 0,
+              "rating": 2,
+              "current": true
+            }
+          }
+        ]
+      }
+    },
+    {
+      "variant": "canceled",
+      "payload": {
+        "status": "canceled",
+        "tournament_id": 1242,
+        "name": "For QA",
+        "reason": "The tournament did not take place and was canceled"
+      }
+    }
+  ]
+}

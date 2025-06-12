@@ -1,0 +1,130 @@
+{
+  "achievement": {
+    "account_id": 123,
+    "alias": "SA_DEVEURGERMANY#37741",
+    "benefit_id": 118616,
+    "currency": "EUR",
+    "status": "complete",
+    "trigger": "achievement",
+    "login": "MOUNS*****",
+    "entity_id": 123,
+    "event_id": 123
+  },
+  "reality_check": {},
+  "new_level": {
+    "account_id": "XXX",
+    "entity_id": "XXX",
+    "currency": "EUR",
+    "login": "XXXX",
+    "level": 5,
+    "max_level": 5,
+    "pct": 19,
+    "xp": 214,
+    "current": 14,
+    "next": 75,
+    "left": 61,
+    "event": "XXXX"
+  },
+  "player_score": {
+    "account_id": "XXX",
+    "entity_id": "XXX",
+    "currency": "EUR",
+    "login": "XXXX",
+    "level": 5,
+    "max_level": 5,
+    "pct": 19,
+    "xp": 214,
+    "current": 14,
+    "next": 75,
+    "left": 61,
+    "event": "new_score"
+  },
+  "message": {
+    "title": "Bonus release limit",
+    "html": "<span>Bonus release was limited<span/>",
+    "message": "Bonus release was limited",
+    "vars": {
+      "release": 3,
+      "writeoff": 7,
+      "currency": "CAD"
+    }
+  },
+  "info": {
+    "result": {
+      "event_id": 486385,
+      "event": "login",
+      "account_type": "test",
+      "login": "DEVC*",
+      "currency": "CAD"
+    }
+  },
+  "sumsub": {
+    "status": "verified"
+  },
+  "bonus_issued": {
+    "result": [
+      {
+        "bonus_id": 11971,
+        "name": "Cash bonus",
+        "type": "casino",
+        "amount": 4,
+        "status": "new",
+        "wager": 50,
+        "currency": "CAD",
+        "rollover": 200,
+        "exclusive": {},
+        "sticky": false,
+        "expire": "2023-10-08 06:56:30",
+        "created": "2023-09-28 06:56:30",
+        "source": "shop"
+      },
+      {
+        "bonus_id": 15299,
+        "name": "Deadwood",
+        "type": "freespin",
+        "amount": 10,
+        "status": "new",
+        "game": {
+          "game_id": 15792,
+          "name": "Deadwood",
+          "alias": "64476-deadwood",
+          "ratio": "16:9",
+          "images": {
+            "small": "https://altacdn.com/wl/img/games/64476-deadwood.jpg",
+            "mid": null,
+            "big": null,
+            "promo": "https://altacdn.com/wl/img/games/64476-deadwood.jpg"
+          },
+          "idx": 29,
+          "rtp": null,
+          "brand": {
+            "brand_id": 938,
+            "name": "Nolimit city",
+            "logo": "https://altacdn.com/wl/img/brands/nolimit-city_logo.svg"
+          },
+          "tournament": false,
+          "categories": [],
+          "collections": [],
+          "demo": true
+        },
+        "wager": 50,
+        "currency": "CAD",
+        "exclusive": {},
+        "sticky": false,
+        "expire": "2023-12-14 16:41:06",
+        "created": "2023-12-04 16:41:06",
+        "source": "shop"
+      }
+    ]
+  },
+  "logout": "Self exclusion",
+  "payment": {
+    "id": 37741,
+    "alias": "SA_DEVEURGERMANY#37741",
+    "currency": "EUR",
+    "paymethod_name": "corefy_iframe",
+    "status": "complete",
+    "amount": 50,
+    "amount_eur": 50
+  }
+}
