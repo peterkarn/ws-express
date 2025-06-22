@@ -4,13 +4,17 @@
   "description": "ws-express test server example",
   "dependencies": {
     "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
     "express": "^4.16.4",
     "socket.io": "2.2.0",
     "socket.io-latest": "npm:socket.io@^4.7.4"
   },
   "scripts": {
     "start:v4": "nodemon server_v4.js",
-    "start:v2": "nodemon server_v2.js"
+    "start:v2": "nodemon server_v2.js",
+    "start": "node server.js",
+    "start:prod:v2": "NODE_ENV=production SERVER_VERSION=v2 node server.js",
+    "start:prod:v4": "NODE_ENV=production SERVER_VERSION=v4 node server.js"
   },
   "devDependencies": {
     "nodemon": "^1.18.11"
