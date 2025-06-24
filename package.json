@@ -10,8 +10,8 @@
     "socket.io-latest": "npm:socket.io@^4.7.4"
   },
   "scripts": {
-    "start:v4": "nodemon server_v4.js",
-    "start:v2": "nodemon server_v2.js",
+    "start:v4": "nodemon SERVER_VERSION=v4 server.js",
+    "start:v2": "nodemon SERVER_VERSION=v2 server.js",
     "start": "node server.js",
     "start:prod:v2": "NODE_ENV=production SERVER_VERSION=v2 node server.js",
     "start:prod:v4": "NODE_ENV=production SERVER_VERSION=v4 node server.js"
