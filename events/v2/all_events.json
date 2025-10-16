@@ -1,14 +1,48 @@
 {
   "achievement": {
-    "account_id": 123,
-    "alias": "SA_DEVEURGERMANY#37741",
-    "benefit_id": 118616,
-    "currency": "EUR",
-    "status": "complete",
-    "trigger": "achievement",
-    "login": "MOUNS*****",
-    "entity_id": 123,
-    "event_id": 123
+    "benefit_id": "PROVIDE_REAL_ACHIEVEMENT_ID_HERE",
+    "type": "achievement",
+    "title": "TEST 10 spins",
+    "description": "Play 10 spins (min bet: 0.30€).",
+    "alias": "test-10-spins",
+    "image": null,
+    "icons": {
+      "on": "https://altacdn.com/ra/img/bonuses/en/206451_ra-ach-500-fs-active-168x124@2.webp",
+      "off": "https://altacdn.com/ra/img/bonuses/en/206438_ra-ach-500-fs-default-168x124@2.webp"
+    },
+    "categories": [],
+    "choices": {},
+    "recurring": "none",
+    "count": 10,
+    "hits": 10,
+    "status": "taken",
+    "pct": 100,
+    "trigger": "bet",
+    "game": {
+      "game_id": 3337,
+      "name": "Wild Buffalo",
+      "alias": "181372-wild-buffalo",
+      "ratio": "16:9",
+      "images": {
+        "small": "https://altacdn.com/ra/img/games/181372-wild-buffalo.jpg",
+        "mid": "https://altacdn.com/ra/img/games/181372-wild-buffalo_thumbnailx2.jpg",
+        "big": null,
+        "promo": "https://altacdn.com/ra/img/games/181372-wild-buffalo.jpg"
+      },
+      "idx": 47,
+      "rtp": "",
+      "brand": {
+        "brand_id": 800,
+        "name": "NetGame",
+        "logo": "https://altacdn.com/ra/img/brands/netgame_logo.svg"
+      },
+      "tournament": false,
+      "categories": [],
+      "collections": [],
+      "demo": true
+    },
+    "completed": "2025-08-20 14:17:32",
+    "steps": []
   },
   "reality_check": {},
   "new_level": {
