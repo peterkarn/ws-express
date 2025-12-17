@@ -1,145 +1,167 @@
-document.addEventListener("DOMContentLoaded", function () {
-  let eventsList = [];
-  let eventsData = {};
+class EventManager {
+  constructor() {
+    this.eventsList = [];
+    this.eventsData = {};
+    this.init();
+  }
 
-  async function loadEvents() {
-    const res = await fetch("/api/events");
-    eventsList = await res.json();
+  async init() {
+    await this.loadEvents();
+    this.attachEventListeners();
+  }
 
-    const dataRes = await fetch("/api/all-events");
-    eventsData = await dataRes.json();
+  async fetchEventsList() {
+    const response = await fetch("/api/events");
+    return await response.json();
+  }
 
+  async fetchEventsData() {
+    const response = await fetch("/api/all-events");
+    return await response.json();
+  }
+
+  async loadEvents() {
+    try {
+      [this.eventsList, this.eventsData] = await Promise.all([
+        this.fetchEventsList(),
+        this.fetchEventsData(),
+      ]);
+
+      this.populateEventSelect();
+      this.handleEventChange();
+    } catch (error) {
+      console.log("Error loading events");
+    }
+  }
+
+  populateEventSelect() {
     const select = document.getElementById("event");
-
     select.innerHTML = "";
 
-    eventsList.forEach((evt) => {
+    this.eventsList.forEach((evt) => {
       const option = document.createElement("option");
-
       option.value = evt.name;
-
       option.textContent = evt.name;
-
       select.appendChild(option);
     });
-
-    handleEventChange();
   }
 
-  function getDefaultPayload(eventName, variant) {
-    if (!eventsData[eventName]) return "";
+  getDefaultPayload(eventName) {
+    if (!this.eventsData[eventName]) return "";
 
-    if (Array.isArray(eventsData[eventName])) {
-      if (!variant) return "";
-
-      const foundVariant = eventsData[eventName].find(
-        (v) => v.variant === variant
-      );
-
-      return foundVariant ? foundVariant.payload : "";
+    if (Array.isArray(this.eventsData[eventName])) {
+      const firstVariant = this.eventsData[eventName][0];
+      return firstVariant ? firstVariant.payload : "";
     }
 
-    return eventsData[eventName];
+    return this.eventsData[eventName];
   }
 
-  function updatePayload() {
+  updatePayloadDisplay() {
     const eventName = document.getElementById("event").value;
-    const variantSelect = document.getElementById("variant");
-    let variantValue = undefined;
+    const payload = this.getDefaultPayload(eventName);
 
-    if (variantSelect) variantValue = variantSelect.value;
-
-    const payload = getDefaultPayload(eventName, variantValue);
-
-    document.getElementById("payload").value = JSON.stringify(payload, null, 2);
+    const formattedPayload = JSON.stringify(payload, null, 2);
+    document.getElementById("payload").value = formattedPayload;
   }
 
-  function handleEventChange() {
+  handleEventChange() {
     const eventName = document.getElementById("event").value;
-    const eventObj = eventsList.find((ev) => ev.name === eventName);
+    const eventObj = this.eventsList.find((ev) => ev.name === eventName);
+
+    this.updateVariantSelect(eventObj);
+    this.updatePayloadDisplay();
+  }
+
+  updateVariantSelect(eventObj) {
     const variantContainer = document.getElementById("variantContainer");
     const variantSelect = document.getElementById("variant");
 
-    if (variantContainer && variantSelect) {
-      const previouslySelectedVariant = variantSelect.value;
-
-      if (eventObj && eventObj.variants && eventObj.variants.length > 0) {
-        variantContainer.style.display = "";
-        variantSelect.innerHTML = "";
-        eventObj.variants.forEach((v) => {
-          const option = document.createElement("option");
-          option.value = v;
-          option.textContent = v;
-          variantSelect.appendChild(option);
-        });
-
-        if (eventObj.variants.includes(previouslySelectedVariant)) {
-          variantSelect.value = previouslySelectedVariant;
-        } else {
-          variantSelect.value = eventObj.variants[0];
-        }
-      } else {
-        variantContainer.style.display = "none";
-        variantSelect.innerHTML = "";
-        variantSelect.value = "";
-      }
-    } else if (variantContainer) {
-      variantContainer.style.display = "none";
+    if (!variantContainer || !variantSelect) {
+      return;
     }
 
-    updatePayload();
+    const hasVariants = eventObj?.variants?.length > 0;
+
+    if (hasVariants) {
+      variantContainer.style.display = "";
+      this.populateVariants(variantSelect, eventObj.variants);
+    } else {
+      variantContainer.style.display = "none";
+      variantSelect.innerHTML = "";
+    }
   }
 
-  function delayedResetTextMessage() {
+  populateVariants(selectElement, variants) {
+    const previousValue = selectElement.value;
+    selectElement.innerHTML = "";
+
+    variants.forEach((variant) => {
+      const option = document.createElement("option");
+      option.value = variant;
+      option.textContent = variant;
+      selectElement.appendChild(option);
+    });
+
+    if (variants.includes(previousValue)) {
+      selectElement.value = previousValue;
+    }
+  }
+
+  async sendMockEvent() {
+    const eventName = document.getElementById("event").value;
+    const eventObj = this.eventsList.find((ev) => ev.name === eventName);
+    const variantSelect = document.getElementById("variant");
+
+    const requestBody = { eventName };
+
+    if (eventObj?.variants && variantSelect) {
+      requestBody.variant = variantSelect.value;
+    }
+
+    requestBody.payload = JSON.parse(document.getElementById("payload").value);
+
+    const response = await fetch("/api/send-mock-event", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(requestBody),
+    });
+
+    const data = await response.json();
+    this.displayStatus(`Event '${data.event}' sent!`, "green");
+  }
+
+  displayStatus(message, color) {
+    const statusDiv = document.getElementById("status");
+    statusDiv.textContent = message;
+    statusDiv.style.color = color;
+
     setTimeout(() => {
-      document.getElementById("status").textContent = "";
+      statusDiv.textContent = "";
     }, 3000);
   }
 
-  if (document.getElementById("event")) {
-    document.getElementById("event").onchange = handleEventChange;
+  attachEventListeners() {
+    const eventSelect = document.getElementById("event");
+    const variantSelect = document.getElementById("variant");
+    const sendBtn = document.getElementById("sendBtn");
+
+    if (eventSelect) {
+      eventSelect.addEventListener("change", () => this.handleEventChange());
+    }
+
+    if (variantSelect) {
+      variantSelect.addEventListener("change", () =>
+        this.updatePayloadDisplay()
+      );
+    }
+
+    if (sendBtn) {
+      sendBtn.addEventListener("click", () => this.sendMockEvent());
+    }
   }
+}
 
-  if (document.getElementById("variant")) {
-    document.getElementById("variant").onchange = updatePayload;
-  }
-
-  if (document.getElementById("sendBtn")) {
-    document.getElementById("sendBtn").onclick = async function () {
-      const eventName = document.getElementById("event").value;
-      const eventObj = eventsList.find((ev) => ev.name === eventName);
-      const variantSelect = document.getElementById("variant");
-      let body = { eventName };
-
-      if (eventObj && eventObj.variants && variantSelect) {
-        body.variant = variantSelect.value;
-      }
-
-      body.payload = JSON.parse(document.getElementById("payload").value);
-
-      const res = await fetch("/api/send-mock-event", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(body),
-      });
-
-      const statusDiv = document.getElementById("status");
-
-      if (res.ok) {
-        const data = await res.json();
-        statusDiv.textContent = `Event '${data.event}'${
-          data.variant ? " (" + data.variant + ")" : ""
-        } sent!`;
-        statusDiv.style.color = "green";
-      } else {
-        const err = await res.json();
-        statusDiv.textContent = err.error || "Error sending event";
-        statusDiv.style.color = "red";
-      }
-
-      delayedResetTextMessage();
-    };
-  }
-
-  loadEvents();
+document.addEventListener("DOMContentLoaded", () => {
+  new EventManager();
 });
