@@ -175,5 +175,9 @@
         "reason": "The tournament did not take place and was canceled"
       }
     }
-  ]
+  ],
+  "rakeback_update": {
+    "balance": 111,
+    "currency": "CAD"
+  }
 }
